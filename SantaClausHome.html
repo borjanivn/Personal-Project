@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Claus's Workshop</title>
+    <link rel="stylesheet" href="SantaClausHomeCSS.css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <img id="logo" src="Logo.png">
+        <p id="navbartext">
+            SANTA'S<br>WORKSHOP
+        </p>
+        <a class="active" href="SantaClausHome.html">HOME</a>
+        <a href="SantaClausWishlist.html">WISHLIST</a>
+        <a href="SantaClausNewsletter.html">NEWSLETTER</a>
+        <a href="SantaClausWheelOfLuck.html">WHEEL OF LUCK</a>
+        <a href="SantaClausAboutUs.html">ABOUT US</a>
+    </div>
+
+    <!-- Main Webpage -->
+    <div id="main">
+        <p id="text">
+            Greetings!
+            Santa is coming,
+            Christmas is in
+            <span id="timer"></span>
+        </p>
+        <p id="text2">
+            Let others know what you want
+            this Christmas with
+            our wishlist!
+        </p>
+        <a href="SantaClausWishlist.html"><button id="button" type="button">MY WISHLIST 📃</button></a>
+        <span id="circle">
+            <img id="gift" src="Gift.png">
+        </span>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <a class="copyright">© 2022 Santa's Workshop</a>
+        <center>
+        <a href="https://www.linkedin.com/company/santa-s-workshop/jobs/">JOBS 💼</a>
+        <a href="SantaClausLegal.html">LEGAL ⚖️</a>
+        <a href="SantaClausSocials.html">SOCIALS 📱</a>
+        </center>
+    </div>
+
+    <!-- Countdown till Christmas -->
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Jan 1, 2023 00:00:00").getTime();
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        // Get today's date and time
+        var now = new Date().getTime();
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now; 
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // Output the result in an element with id="demo"
+        document.getElementById("timer").innerHTML = days + " days! ❄️";
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+body {
+    background: linear-gradient(107.56deg, #726F3B -27.88%, #C2BF68 100%);
+}
+
+/* Navigation Bar */
+.topnav {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.topnav a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 20px;
+    margin-left: 5px;
+}
+
+.topnav a:hover {
+    background-color: #eeeeee;
+    color: #0f0f0f;
+}
+
+.topnav a.active {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+#logo {
+    width: 46px;
+    height: 46px;
+    float: left;
+}
+
+#navbartext {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+/* Main Website */
+#main {
+    position: absolute;
+    width: 1000px;
+    height: 650px;
+    left: 450px;
+    top: 150px;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 100%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.45);
+    border-radius: 50px;
+}
+
+#text {
+    position: relative;
+    width: 450px;
+    height: 400px;
+    top: -100px;
+    left: 30px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.a {
+    position: relative;
+    font-size: 42px;
+    top: -250px;
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+.a:hover {
+    text-decoration: underline;
+}
+
+.tt {
+    background: -webkit-linear-gradient(180deg, #00B2FF 0%, #00070B 42.19%, #000000 54.69%, #FF0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.i {
+    background: -webkit-linear-gradient(180deg, #CC00FF 0%, #FF00E5 32.29%, #FF0000 66.15%, #FFD600 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.t {
+    color: #1da1f2;
+}
+
+.f {
+    color: #1877f2;
+}
+
+/* Footer */
+#footer {
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+} 
+
+.copyright {
+    position: fixed;
+}
+
+#footer a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+#footer a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+#footer a:active {
+    text-decoration: underline;
+}

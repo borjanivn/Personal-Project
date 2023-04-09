@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Claus's Workshop</title>
+    <link rel="stylesheet" href="SantaClausWheelOfLuckCSS.css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <img id="logo" src="Logo.png">
+        <p id="navbartext">
+            SANTA'S<br>WORKSHOP
+        </p>
+        <a href="SantaClausHome.html">HOME</a>
+        <a href="SantaClausWishlist.html">WISHLIST</a>
+        <a href="SantaClausNewsletter.html">NEWSLETTER</a>
+        <a class="active" href="SantaClausWheelOfLuck.html">WHEEL OF LUCK</a>
+        <a href="SantaClausAboutUs.html">ABOUT US</a>
+    </div>
+
+    <!-- Main Webpage -->
+    <div id="main">
+        <p id="text">
+            Try your luck with
+            <span class="magic">
+            <span class="magic-star">
+                <svg viewBox="0 0 512 512">
+                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                </svg>
+            </span>
+            <span class="magic-star">
+                <svg viewBox="0 0 512 512">
+                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                </svg>
+            </span>
+            <span class="magic-star">
+                <svg viewBox="0 0 512 512">
+                <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                </svg>
+            </span>
+            <span class="magic-text">&nbsp;The Wheel Of Fortune</span>
+            !
+        </p>
+        <div id="app">
+            <img class="marker" src="marker.png" draggable="false"/>
+            <img class="wheel" src="wheel.png" draggable="false"/>
+            <button class="button" type="button">SPIN THE WHEEL</button>
+            <div class="prize">Your prize is:</div>
+            <div class="display">-</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <a class="copyright">© 2022 Santa's Workshop</a>
+        <center>
+        <a href="https://www.linkedin.com/company/santa-s-workshop/jobs/">JOBS 💼</a>
+        <a href="SantaClausLegal.html">LEGAL ⚖️</a>
+        <a href="SantaClausSocials.html">SOCIALS 📱</a>
+        </center>
+    </div>
+
+    <!-- JS for magic text -->
+    <script>
+        let index = 0,
+        interval = 1000;
+        
+        const randm = (min, max) => 
+        Math.floor(Math.random() * (max - min + 1)) + min;
+        
+        const animate = star => {
+        star.style.setProperty("--star-left", `${randm(-10, 100)}%`);
+        star.style.setProperty("--star-top", `${randm(-40, 80)}%`);
+        
+        star.style.animation = "none";
+        star.offsetHeight;
+        star.style.animation = "";
+        }
+        
+        for(const star of document.getElementsByClassName("magic-star")) {
+        setTimeout(() => {
+            animate(star);
+            
+            setInterval(() => animate(star), 1000);
+        }, index++ * (interval / 3))
+        }
+    </script>
+
+    <!-- JS for the wheel -->
+    <script>
+        (function() {
+            const wheel = document.querySelector('.wheel');
+            const startButton = document.querySelector('.button');
+            const display = document.querySelector('.display');
+            
+            let deg = 0;
+            let zoneSize = 45; // deg
+
+            // Counter clockwise
+            const symbolSegments = {
+                1: "Christmas Lights",
+                2: "Christmas Socks",
+                3: "Chrtstmas Jumper",
+                4: "Christmas Water Flask",
+                5: "Store Credit ($50)",
+                6: "Store Credit ($10)",
+                7: "Store Credit ($5)",
+                8: "Coal (Nothing)",
+            }
+
+            const handleWin = (actualDeg) => {
+                const winningSymbolNr = Math.ceil(actualDeg / zoneSize);
+                display.innerHTML = symbolSegments[winningSymbolNr];
+            }
+
+            startButton.addEventListener('click', () => {
+                // Reset display
+                display.innerHTML = "-";
+                // Disable button during spin
+                startButton.style.pointerEvents = 'none';
+                // Calculate a new rotation between 5000 and 10 000
+                deg = Math.floor(5000 + Math.random() * 5000);
+                // Set the transition on the wheel
+                wheel.style.transition = 'all 10s ease-out';
+                // Rotate the wheel
+                wheel.style.transform = `rotate(${deg}deg)`;
+                // Apply the blur
+                wheel.classList.add('blur');
+            });
+
+            wheel.addEventListener('transitionend', () => {
+                // Remove blur
+                wheel.classList.remove('blur');
+                // Enable button when spin is over
+                startButton.style.pointerEvents = 'auto';
+                // Need to set transition to none as we want to rotate instantly
+                wheel.style.transition = 'none';
+                // Calculate degree on a 360 degree basis to get the "natural" real rotation
+                // Important because we want to start the next spin from that one
+                // Use modulus to get the rest value
+                const actualDeg = deg % 360;
+                // Set the real rotation instantly without animation
+                wheel.style.transform = `rotate(${actualDeg}deg)`;
+                // Calculate and display the winning symbol
+                handleWin(actualDeg);
+            });
+        })();
+    </script>
+</body>
+</html>
